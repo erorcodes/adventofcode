@@ -7,20 +7,17 @@ class Santa {
 
     public void followInstructions (String instr) {
 
-        char[] charInstructions = instr.toCharArray();
-        String turn = String.valueOf(charInstructions[0]);
-        int blocks = Character.getNumericValue(charInstructions[1]);
+        String[] arrayOfInstructions = instr.split(", ");
+        for (int i = 0; i < arrayOfInstructions.length; i++) {
 
-/*
-        System.out.println(instr);
-        System.out.println(charInstructions);
-        System.out.println(turn);
-        System.out.println(blocks);
-*/
+            String instruction = arrayOfInstructions[i];
 
-        changeDirection(turn);
-        walk(blocks);
+            String turn = String.valueOf(instruction.charAt(0));
+            int blocks = Integer.parseInt(instruction.substring(1));
 
+            changeDirection(turn);
+            walk(blocks);
+        }
     }
 
 
