@@ -1,13 +1,21 @@
 package adventofcode2016;
 
+import java.util.ArrayList;
+import java.util.List;
+
 class Santa {
     public String direction = "north";
     public int x = 0;
     public int y = 0;
+    private List<String> visitedCrossings = new ArrayList<String>();
+    private List<String> crossingsVisitedMultipleTimes = new ArrayList<String>();
+    private String currentPosition;
+    private int distanceToEasterBunnyHQ = 0;
 
     public void followInstructions (String instr) {
 
         String[] arrayOfInstructions = instr.split(", ");
+
         for (int i = 0; i < arrayOfInstructions.length; i++) {
 
             String instruction = arrayOfInstructions[i];
@@ -16,7 +24,7 @@ class Santa {
             int blocks = Integer.parseInt(instruction.substring(1));
 
             changeDirection(turn);
-            walk(blocks);
+            walkBlocks(blocks);
         }
     }
 
@@ -46,19 +54,39 @@ class Santa {
         }
     }
 
-    private void walk (int blocks) {
-        if (direction.equals("west")) {
-            x -= blocks;
-        } else if (direction.equals("north")) {
-            y += blocks;
-        } else if (direction.equals("east")) {
-            x += blocks;
-        } else if (direction.equals("south")) {
-            y -= blocks;
+    private void walkBlocks (int blocks) {
+        for (int i = 0; i < blocks; i++) {
+            if (direction.equals("west")) {
+                x -= 1;
+            } else if (direction.equals("north")) {
+                y += 1;
+            } else if (direction.equals("east")) {
+                x += 1;
+            } else if (direction.equals("south")) {
+                y -= 1;
+            }
+
+            currentPosition = x+","+y;
+
+            if (visitedCrossings.contains(currentPosition) == true) {
+                if (crossingsVisitedMultipleTimes.contains(currentPosition) == false) {
+                    crossingsVisitedMultipleTimes.add(currentPosition);
+                    if (distanceToEasterBunnyHQ == 0) {
+                        distanceToEasterBunnyHQ = getDistanceToEasterBunnyHQ();
+                    }
+                }
+            }
+            else {
+                visitedCrossings.add(currentPosition);
+            }
         }
     }
 
-    public int getDistance () {
+    public int getDistanceToEasterBunnyHQ () {
         return Math.abs(x) + Math.abs(y);
+    }
+
+    public int getRealDistanceToEasterBunnyHQ () {
+        return distanceToEasterBunnyHQ;
     }
 }
