@@ -9,16 +9,13 @@ class Santa {
     public int y = 0;
     private List<String> visitedCrossings = new ArrayList<String>();
     private List<String> crossingsVisitedMultipleTimes = new ArrayList<String>();
-    private String currentPosition;
     private int distanceToEasterBunnyHQ = 0;
 
     public void followInstructions (String instr) {
 
         String[] arrayOfInstructions = instr.split(", ");
 
-        for (int i = 0; i < arrayOfInstructions.length; i++) {
-
-            String instruction = arrayOfInstructions[i];
+        for (String instruction : arrayOfInstructions) {
 
             String turn = String.valueOf(instruction.charAt(0));
             int blocks = Integer.parseInt(instruction.substring(1));
@@ -66,10 +63,10 @@ class Santa {
                 y -= 1;
             }
 
-            currentPosition = x+","+y;
+            String currentPosition = x + "," + y;
 
-            if (visitedCrossings.contains(currentPosition) == true) {
-                if (crossingsVisitedMultipleTimes.contains(currentPosition) == false) {
+            if (visitedCrossings.contains(currentPosition)) {
+                if (!crossingsVisitedMultipleTimes.contains(currentPosition)) {
                     crossingsVisitedMultipleTimes.add(currentPosition);
                     if (distanceToEasterBunnyHQ == 0) {
                         distanceToEasterBunnyHQ = getDistanceToEasterBunnyHQ();
