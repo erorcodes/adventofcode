@@ -3,12 +3,15 @@ package adventofcode2016;
 public class KeyPad {
     public int key = 5;
     public String combination = "";
-
+    
+    //TODO: Add file reader to handle instructions from separate files.
     public void pressKey (String instruction) {
         for (int i = 0; i < instruction.length(); i++) {
-            String nextKey = String.valueOf(instruction.charAt(i));
+            String nextInstruction = String.valueOf(instruction.charAt(i));
 
-            if (nextKey.equals("U")) {
+            //TODO: Maybe this can be made with a matrix and the instructions will increase or decrease the "coordinates" in the matrix.
+            //If the position is [0,0] that means 1, [1,2] means 8 etc...
+            if (nextInstruction.equals("U")) {
                 switch (key) {
                     case 1:
                     case 4:
@@ -32,8 +35,7 @@ public class KeyPad {
                         key = 6;
                         break;
                 }
-                combination += key;
-            } else if (nextKey.equals("D")) {
+            } else if (nextInstruction.equals("D")) {
                 switch (key) {
                     case 1:
                         key = 4;
@@ -57,8 +59,7 @@ public class KeyPad {
                         key = 9;
                         break;
                 }
-                combination += key;
-            } else if (nextKey.equals("L")) {
+            } else if (nextInstruction.equals("L")) {
                 switch (key) {
                     case 1:
                     case 2:
@@ -82,8 +83,7 @@ public class KeyPad {
                         key = 8;
                         break;
                 }
-                combination += key;
-            } else if (nextKey.equals("R")) {
+            } else if (nextInstruction.equals("R")) {
                 switch (key) {
                     case 1:
                         key = 2;
@@ -107,10 +107,11 @@ public class KeyPad {
                         key = 9;
                         break;
                 }
+            }
+            //TODO: Improve instruction reading to handle new row as sign of new key-instruction.
+            if (nextInstruction.equals(",") || i == instruction.length()-1) {
                 combination += key;
             }
         }
-
     }
-
 }

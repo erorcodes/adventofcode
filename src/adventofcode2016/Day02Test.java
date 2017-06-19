@@ -39,9 +39,19 @@ public class Day02Test extends TestCase{
         assertEquals(7, keyPad.key);
     }
 
-    public void testTwoKeys() {
+    public void testTwoKeysWithOneCharAsInstruction() {
         instr = "U,L";
         keyPad.pressKey(instr);
         assertEquals("21", keyPad.combination);
+    }
+    public void testTwoKeysWithLongerInstructions() {
+        instr = "ULD,LURRR";
+        keyPad.pressKey(instr);
+        assertEquals("43", keyPad.combination);
+    }
+    public void testFourKeysWithLongerInstructions() {
+        instr = "ULD,LUR,UDUD,LDRR";
+        keyPad.pressKey(instr);
+        assertEquals("4259", keyPad.combination);
     }
 }
