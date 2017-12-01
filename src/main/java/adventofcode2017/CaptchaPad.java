@@ -1,23 +1,31 @@
 package adventofcode2017;
 
-public class CaptchaPad {
+class CaptchaPad {
 
-    public int sumOfEqualNumbers(String captcha) {
+    private String captcha;
+
+    int sumOfEqualNumbers(String captcha) {
         int sum = 0;
+        this.captcha = captcha;
+
         for (int i = 0; i < captcha.length(); i++) {
-            int firstNumber = Integer.parseInt(String.valueOf(captcha.charAt(i)));
+            int thisNumber = numberAtPosition(i);
             if (i == captcha.length() - 1) {
-                if (firstNumber == Integer.parseInt(String.valueOf(captcha.charAt(0)))){
-                    sum += firstNumber;
+                if (thisNumber == numberAtPosition(0)){
+                    sum += thisNumber;
                 }
                 break;
             }
-            int secondNumber = Integer.parseInt(String.valueOf(captcha.charAt(i + 1)));
+            int nextNumber = numberAtPosition(i + 1);
 
-            if (firstNumber == secondNumber) {
-                sum += firstNumber;
+            if (thisNumber == nextNumber) {
+                sum += thisNumber;
             }
         }
         return sum;
+    }
+
+    private int numberAtPosition(int position) {
+        return Integer.parseInt(String.valueOf(captcha.charAt(position)));
     }
 }
