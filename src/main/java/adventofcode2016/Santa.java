@@ -3,7 +3,7 @@ package adventofcode2016;
 import java.util.ArrayList;
 import java.util.List;
 
-class Santa {
+public class Santa {
     public String direction = "north";
     public int x = 0;
     public int y = 0;

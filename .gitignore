@@ -1,4 +1,6 @@
 *.iml
 *.ipr
 *.iws
-/out
+/out/
+.idea/
+.DS_store
