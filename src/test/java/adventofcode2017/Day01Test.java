@@ -21,4 +21,9 @@ public class Day01Test extends TestCase {
         assertEquals(4, captchaPad.sumOfEqualNumbers(captcha));
     }
 
+    public void test1234ShouldReturn0() throws Exception {
+        captcha = "1234";
+        assertEquals(0, captchaPad.sumOfEqualNumbers(captcha));
+    }
+
 }
