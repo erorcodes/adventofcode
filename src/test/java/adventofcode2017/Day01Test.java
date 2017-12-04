@@ -11,22 +11,22 @@ public class Day01Test extends TestCase {
         captchaPad = new CaptchaPad();
     }
 
-    public void test1122ShouldReturn3() throws Exception {
+    public void test1122_shouldReturn3() throws Exception {
         captcha = "1122";
         assertEquals(3, captchaPad.sumOfEqualNumbers(captcha));
     }
 
-    public void test1111ShouldReturn4() throws Exception {
+    public void test1111_shouldReturn4() throws Exception {
         captcha = "1111";
         assertEquals(4, captchaPad.sumOfEqualNumbers(captcha));
     }
 
-    public void test1234ShouldReturn0() throws Exception {
+    public void test1234_shouldReturn0() throws Exception {
         captcha = "1234";
         assertEquals(0, captchaPad.sumOfEqualNumbers(captcha));
     }
 
-    public void test91212129ShouldReturn9() throws Exception {
+    public void test91212129_shouldReturn9() throws Exception {
         captcha = "91212129";
         assertEquals(9, captchaPad.sumOfEqualNumbers(captcha));
     }
