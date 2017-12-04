@@ -2,6 +2,10 @@ package adventofcode2017;
 
 import junit.framework.TestCase;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+
 public class Day01Test extends TestCase {
 
     private String captcha;
@@ -30,4 +34,9 @@ public class Day01Test extends TestCase {
         captcha = "91212129";
         assertEquals(9, captchaPad.sumOfEqualNumbers(captcha));
     }
+
+    public void testReadFromFile_shouldReturn0() throws Exception {
+        String path = "day011input.txt";
+    }
+
 }
