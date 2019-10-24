@@ -1,4 +1,4 @@
-package adventofcode2015;
+package test.java.adventofcode2015;
 
 import junit.framework.TestCase;
 

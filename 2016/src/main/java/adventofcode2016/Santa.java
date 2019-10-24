@@ -1,4 +1,4 @@
-package adventofcode2016;
+package main.java.adventofcode2016;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package adventofcode2017;
+package main.java.adventofcode2017;
 
 class CaptchaPad {
 

@@ -1,4 +1,4 @@
-package adventofcode2016;
+package main.java.adventofcode2016;
 
 public class KeyPad {
     public int key = 5;

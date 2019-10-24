@@ -1,4 +1,4 @@
-package adventofcode2015;
+package main.java.adventofcode2015;
 
 public class Santa {
 
