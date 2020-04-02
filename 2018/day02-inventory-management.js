@@ -8,11 +8,25 @@ const inventoryManager = (input) => {
   
   inputAsArray.forEach((id) => {
     const idAsArray = id.split("").map(String);
-    console.log(idAsArray);
-    // idAsArray.forEach()
+    // console.log(idAsArray);
+    const count = Object.create(null);
+    
+    idAsArray.forEach(letter => {
+      count[letter] = count[letter] ? count[letter] + 1 : 1;
+    });
+    console.log(count);
+    
+    cons
+    for (let letter of Object.keys(count)) {
+      if (count[letter] === 3) {
+        three += 1;
+      }
+      if (count[letter] === 2) {
+        two += 1;
+      }
+    }
   });
-  
-  
+  console.log(two * three);
   return two * three;
 };
 
