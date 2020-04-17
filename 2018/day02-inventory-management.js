@@ -13,19 +13,27 @@ const inventoryManager = (input) => {
     
     idAsArray.forEach(letter => {
       count[letter] = count[letter] ? count[letter] + 1 : 1;
+      console.log(count);
     });
     console.log(count);
-    
-    cons
+
+
+    for (let letter of Object.keys(count)) {
+      if (count[letter] === 2) {
+        two += 1;
+        console.log("Adding a " + letter + " to 2")
+      }
+    }
+
     for (let letter of Object.keys(count)) {
       if (count[letter] === 3) {
         three += 1;
-      }
-      if (count[letter] === 2) {
-        two += 1;
+        console.log("Adding a " + letter + " to 3")
       }
     }
   });
+  console.log("Two: " + two);
+  console.log("Three: " + three);
   console.log(two * three);
   return two * three;
 };
