@@ -1,28 +1,23 @@
-const fs = require("fs");
-const day01input = fs.readFileSync("./day01.txt").toString('utf-8');
+
+const checkSum = (numbers) => numbers.reduce((acc, curr) => acc + curr);
 
 function reportRepair(input) {
   let arr = input.split("\n").map(Number);
-  let sum = 0;
-  let a, b;
+  let numbers = [];
 
   // Take first number in array and set as A
   for (let i = 0; i < arr.length; i++) {
-    a = arr[i];
+    numbers[0] = arr[i];
 
     for (let j = 1; j < arr.length; j++) {
       // Add A and B
-      b = arr[j];
+      numbers[1] = arr[j];
 
-      sum = a + b;
-
-      // If sum is not 2020, set next number to B and try again
-      console.log('Sum is ' + sum);
-
-      if (sum === 2020){
-        // Multiply final A and B
-        return a * b;
+      // Check if sum is 2020
+      if (checkSum(numbers) === 2020) {
+        return numbers[0] * numbers[1];
       }
+
     }
   }
 
@@ -46,4 +41,7 @@ let testCase2 =
 
 console.log('Test case 1: ' + reportRepair(testCase1));
 console.log('Test case 2: ' + reportRepair(testCase2));
+
+const fs = require("fs");
+const day01input = fs.readFileSync("./day01.txt").toString('utf-8');
 console.log('Day 1: ' + reportRepair(day01input));
