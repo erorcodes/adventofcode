@@ -1,5 +1,6 @@
 
-const checkSum = (numbers) => numbers.reduce((acc, curr) => acc + curr) === 2020;
+const sumIs2020 = numbers => numbers.reduce((acc, curr) => acc + curr) === 2020;
+const result = numbers => numbers.reduce((acc, curr) => acc * curr);
 
 function reportRepair(input, n) {
   let arr = input.split("\n").map(Number);
@@ -13,17 +14,14 @@ function reportRepair(input, n) {
       // Add A and B
       numbers[1] = arr[j];
 
-      if (n === 2) {
-        // Check if sum is 2020
-        if (checkSum(numbers)) {
-          return numbers[0] * numbers[1];
-        }
+      if (n === 2 && sumIs2020(numbers)) {
+        return result(numbers);
       } else if (n === 3) {
         for (let k = 2; k < arr.length; k++) {
           numbers[2] = arr[k];
 
-          if (checkSum(numbers)) {
-            return numbers[0] * numbers[1] * numbers[2];
+          if (sumIs2020(numbers)) {
+            return result(numbers);
           }
         }
       }
