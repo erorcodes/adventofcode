@@ -17,7 +17,6 @@ const calculateRow = binary => {
   });
   return row[0];
 };
-// console.log(calculateRow('FBFBBFF'));
 
 const calculateColumns = binary => {
   let column = columns;
@@ -26,18 +25,24 @@ const calculateColumns = binary => {
   });
   return column[0];
 };
-// console.log(calculateColumns('RLR'));
 
 const calculateSeatID = seat => seat[0] * 8 + seat[1];
-console.log(calculateSeatID([44,5]));
+const createBoardingPassList = input => input.split(/\n/).map(p => [p.slice(0,7), p.slice(7)]);
 
-const boardingPassList = input => input.split(/\n/).map(p => [p.slice(0,7), p.slice(7)]);
-// console.log("Test input for part 1: " + boardingPassList(testInput));
+const seatIdList = input => createBoardingPassList(input).map(b => [calculateRow(b[0]), calculateColumns(b[1])]).map(seat => calculateSeatID(seat)).sort();
 
-const findLargestID = input => boardingPassList(input).map(b => [calculateRow(b[0]), calculateColumns(b[1])]).map(seat => calculateSeatID(seat)).reduce((acc, curr) => curr > acc ? curr: acc, 0);
+const findLargestID = input => seatIdList(input).reduce((acc, curr) => curr > acc ? curr: acc, 0);
 
-// console.log("Test input for part 1: " + findLargestID(testInput));
+const mySeatID = boardingPasses => {
+  let seatIDList = seatIdList(boardingPasses);
+  for (let i = 1; i < seatIDList.length; i++) {
+    if ((seatIDList[i]+1 !== seatIDList[i+1]) && (seatIDList[i]+2 === seatIDList[i+1])){
+      return seatIDList[i]+1;
+    }
+  }
+}
 
 const fs = require("fs");
 const puzzleInput = fs.readFileSync("./day05.txt").toString('utf-8');
 console.log("Puzzle of the day, part 1: " + findLargestID(puzzleInput));
+console.log("Puzzle of the day, part 2: " + mySeatID(puzzleInput));
